@@ -4,12 +4,8 @@ using System.Text;
 
 namespace ScriptOrganizer.Models;
 
-public partial class Character : IComparable<Character>
+public partial class Character : BaseObject, IComparable<Character>
 {
-   /// <summary>
-   /// The character's ID. Should be unique between all characters in a script.
-   /// </summary>
-   public string ID { get; init; }
 
    /// <summary>
    /// The character's name

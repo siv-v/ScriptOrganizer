@@ -2,6 +2,45 @@
 
 public partial class Character
 {
+   /// <summary>
+   /// Takes an official character's ID and converts it to its name
+   /// </summary>
+   /// <param name="id">The character's id</param>
+   /// <returns>The character's name</returns>
+   public static string OfficialIDToName(string id)
+   {
+      return id.Replace("_", "").ToLower() switch
+             {
+                "bountyhunter" => "Bounty Hunter",
+                "highpriestess" => "High Priestess",
+                "villageidiot" => "Village Idiot",
+                "snakecharmer" => "Snake Charmer",
+                "fortuneteller" => "Fortune Teller",
+                "cultleader" => "Cult Leader",
+                "towncrier" => "Town Crier",
+                "tealady" => "Tea Lady",
+                "poppygrower" => "Poppy Grower",
+                "plaguedoctor" => "Plague Doctor",
+                "devilsadvocate" => "Devil's Advocate",
+                "pithag" => "Pit-Hag",
+                "eviltwin" => "Evil Twin",
+                "scarletwoman" => "Scarlet Woman",
+                "organgrinder" => "Organ Grinder",
+                "lilmonsta" => "Lil' Monsta",
+                "nodashii" => "No Dashii",
+                "fanggu" => "Fang Gu",
+                "lordoftyphon" => "Lord of Typhon",
+                "alhadikhia" => "Al-Hadikhia",
+                "bonecollector" => "Bone Collector",
+                "spiritofivory" => "Spirit of Ivory",
+                "hellslibrarian" => "Hell's Librarian",
+                "deusexfiasco" => "Deus ex Fiasco",
+                "stormcatcher" => "Storm Catcher",
+                "bigwig" => "Big Wig",
+                _ => $"{char.ToUpper(id[0])}{id[1..]}"
+             };
+   }
+
    private EStandardOrderIndex OrderIndexLookup()
    {
       // special cases

@@ -1,6 +1,4 @@
-﻿using ScriptOrganizer.Models;
-
-namespace ScriptOrganizerTests;
+﻿namespace ScriptOrganizerTests;
 
 public class CharacterOrderingTests
 {
