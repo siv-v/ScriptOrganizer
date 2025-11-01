@@ -58,7 +58,12 @@ public class Script(ScriptMeta metadata, IList<Character> characters)
             }
             else
             {
-               characters.Add(item.Deserialize<Character>(_serializerOptions)!);
+               var character = item.Deserialize<Character>(_serializerOptions)!;
+               if (string.IsNullOrEmpty(character.Name))
+               {
+                  character.Name = Character.OfficialIDToName(character.ID);
+               }
+               characters.Add(character);
             }
          }
       }
@@ -66,7 +71,6 @@ public class Script(ScriptMeta metadata, IList<Character> characters)
       if (meta == null) throw new InvalidOperationException("Script must have metadata");
 
       var scriptObj = new Script(meta, characters);
-      Console.WriteLine(scriptObj);
       return scriptObj;
    }
 }

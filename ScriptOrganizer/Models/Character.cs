@@ -10,12 +10,12 @@ public partial class Character : BaseObject, IComparable<Character>
    /// <summary>
    /// The character's name
    /// </summary>
-   public string Name { get; init;  }
+   public string? Name { get; set;  }
 
    /// <summary>
    /// The character's ability
    /// </summary>
-   public string Ability { get; init;  }
+   public string? Ability { get; init;  }
 
    /// <summary>
    /// The character type. Maps to the "team" attribute in the JSON.
@@ -25,7 +25,7 @@ public partial class Character : BaseObject, IComparable<Character>
    /// <summary>
    /// The flavor text/quote of the character.
    /// </summary>
-   public string Flavor { get; init; }
+   public string? Flavor { get; init; }
 
 
    /// <summary>
@@ -54,12 +54,27 @@ public partial class Character : BaseObject, IComparable<Character>
          var builder = new StringBuilder();
          // A
          builder.Append((int)CharacterType);
-         // BB
-         builder.Append(((int)OrderIndexLookup()).ToString().PadLeft(2, '0'));
-         // CCC
-         builder.Append(Ability.Length.ToString().PadLeft(3, '0'));
-         // DD
-         builder.Append(Name.Length.ToString().PadLeft(2, '0'));
+         if (Ability is not null)
+         {
+            // BB
+            builder.Append(((int)OrderIndexLookup()).ToString().PadLeft(2, '0'));
+            // CCC
+            builder.Append(Ability.Length.ToString().PadLeft(3, '0'));
+         }
+         else
+         {
+            builder.Append("99999");
+         }
+
+         if (Name is not null)
+         {
+            // DD
+            builder.Append(Name.Length.ToString().PadLeft(2, '0'));
+         }
+         else
+         {
+            builder.Append("99");
+         }
 
          return builder.ToString();
       }

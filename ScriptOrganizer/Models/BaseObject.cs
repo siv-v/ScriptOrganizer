@@ -7,5 +7,5 @@ namespace ScriptOrganizer.Models;
 public class BaseObject
 {
    [JsonRequired]
-   public string ID { get; set; }
+   public required string ID { get; set; }
 }

@@ -15,6 +15,19 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+    <StackPanel>
+        <Button x:Name="LoadScriptButton" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_OnClick">Load Script</Button>
+        <TextBlock x:Name="ScriptName" Text="{Binding ScriptName}" />
+        <WrapPanel>
+            <ListBox x:Name="CharacterList" HorizontalAlignment="Right" VerticalAlignment="Center" ItemsSource="{Binding Characters, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </WrapPanel>
+    </StackPanel>
 </Window>
